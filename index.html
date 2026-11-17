@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacob Muir — Systems Engineering</title>
+<meta name="description" content="Jacob Muir, Systems Engineering student at the College of Charleston. Projects, experience, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f7fa;
+    --text: #16202c;
+    --muted: #4a5868;
+    --line: #dde3ea;
+    --accent: #1d5fa8;
+    --accent-soft: #e6eef8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f151c;
+      --surface: #17202a;
+      --text: #e8edf2;
+      --muted: #a3b0be;
+      --line: #2a3643;
+      --accent: #7fb2ec;
+      --accent-soft: #1b2a3b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--bg); padding: 8px 14px; border-radius: 6px; z-index: 10; }
+  .skip:focus { left: 16px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.top {
+    position: sticky; top: 0; z-index: 5;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-weight: 700; text-decoration: none; color: var(--text); letter-spacing: -0.01em; }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px; }
+  nav a:hover { color: var(--accent); }
+  @media (max-width: 600px) { nav ul { gap: 14px; } nav a { font-size: 14px; } .brand { display: none; } }
+
+  .hero { padding: 84px 0 56px; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .hero .role { font-size: 1.2rem; color: var(--muted); margin: 0 0 22px; }
+  .hero p.lead { max-width: 640px; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 8px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    border: 1.5px solid var(--accent);
+  }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.ghost { color: var(--accent); }
+  .btn:hover { filter: brightness(1.08); }
+
+  section { padding: 48px 0; border-top: 1px solid var(--line); scroll-margin-top: 60px; }
+  h2 { font-size: 1.5rem; margin: 0 0 24px; letter-spacing: -0.01em; }
+  h3 { font-size: 1.08rem; margin: 0; }
+  .meta { color: var(--muted); font-size: 15px; }
+
+  .cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+  .card p { margin: 0; }
+  .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; align-self: flex-start; }
+  .card .link { margin-top: auto; padding-top: 6px; font-weight: 600; font-size: 15px; }
+
+  .job { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .job:last-child { border-bottom: 0; }
+  .job .when { color: var(--muted); font-size: 15px; white-space: nowrap; }
+  .job ul { grid-column: 1 / -1; margin: 8px 0 0; padding-left: 20px; }
+  .job li { margin: 4px 0; }
+  @media (max-width: 600px) { .job { grid-template-columns: 1fr; } }
+
+  .skills { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .skills h3 { font-size: 0.95rem; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .skills ul { list-style: none; margin: 0; padding: 0; }
+  .skills li { padding: 2px 0; }
+
+  .edu { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+  .edu p { margin: 6px 0 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Jacob Muir</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <h1>Jacob Muir</h1>
+    <p class="role">Systems Engineering student · College of Charleston</p>
+    <p class="lead">
+      I'm a Systems Engineering major with a Mathematics minor, graduating in May 2028.
+      I've collected field survey data, programmed robots, and designed in CAD,
+      and right now I'm studying human factors: how people actually use the systems engineers build.
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/jacob-muir-658125350" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <section id="projects" aria-labelledby="projects-h">
+    <h2 id="projects-h">Projects</h2>
+    <div class="cards">
+      <article class="card">
+        <span class="tag">Human Factors</span>
+        <h3>AeroDash: Drone Delivery Dashboard</h3>
+        <p class="meta">ENGR 321 · Team project · Fall 2026</p>
+        <p>An installable web app prototype for drone delivery operations: delivery flow, geofenced drop zones, live tracking, emergency return-to-base, and a fleet analytics dashboard.</p>
+        <a class="link" href="https://jtmuir06-cpu.github.io/aerodash-app/" target="_blank" rel="noopener">Try the prototype →</a>
+      </article>
+      <article class="card">
+        <span class="tag">Human Factors</span>
+        <h3>Drone Delivery Simulator Study</h3>
+        <p class="meta">ENGR 321 · Team project · Fall 2026</p>
+        <p>A browser-based 3D drone simulator our team built to run a user study comparing two control-panel designs. Participants fly delivery missions while the sim logs their performance.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Robotics</span>
+        <h3>Autonomous Obstacle-Avoidance Robot</h3>
+        <p class="meta">Intro to Electrical &amp; Mechanical Systems · 3-person team</p>
+        <p>I was the team's only programmer, writing the sensor logic and movement control so an mBot could detect and avoid obstacles in real time with an ultrasonic sensor. The finished robot avoided obstacles reliably.</p>
+      </article>
+      <article class="card">
+        <span class="tag">CAD</span>
+        <h3>3D Water Bottle Design</h3>
+        <p class="meta">Engineering Graphics · 3-person team</p>
+        <p>Modeled a water bottle in AutoCAD and Fusion 360 as part of an introductory CAD and engineering graphics course.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+
+    <div class="job">
+      <h3>Land Surveying Intern · Bowman Consulting Group</h3>
+      <span class="when">Jun 2026 – Jul 2026</span>
+      <ul>
+        <li>Collected field survey data with 2–4 person crews across 10 sites: stakeouts, topographic surveys, and as-built surveys using a total station and GPS/GNSS.</li>
+        <li>Operated a Trimble TSC7 data collector to capture and process precision field data for completed project deliverables.</li>
+        <li>Handled office and field logistics independently to support crews between site assignments.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>IT &amp; Operations Support · Ward Services, Columbia SC</h3>
+      <span class="when">Jun 2021 – May 2024</span>
+      <ul>
+        <li>Prepared and imaged laptops for deployment, including secure data wiping, to meet device-readiness and data-security standards.</li>
+        <li>Supported the office with document organization and shipping/logistics coordination.</li>
+        <li>Coordinated client pickups and deliveries for accurate, on-time handoff.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>Junior Counselor · Camp Gravatt</h3>
+      <span class="when">Summers 2021 – 2022</span>
+      <ul>
+        <li>Supervised a cabin of 5th–8th grade campers, including managing medications and dietary needs.</li>
+        <li>Promoted from Leader in Training after completing the camp's leadership training track.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <div class="edu">
+      <h3>College of Charleston, Charleston SC</h3>
+      <p>B.S. Systems Engineering · Minor in Mathematics · Expected May 2028 · GPA 3.54</p>
+      <p class="meta">President's Honor Roll (Fall 2024) · Dean's List (Fall 2025) · Phi Eta Sigma (Spring 2026)</p>
+      <p class="meta">Coursework: Human Factors, Systems Engineering, Engineering Graphics, Intro to Electrical &amp; Mechanical Systems, Engineering Programming, Linear Algebra, Differential Equations, Statistical Methods, Physics I &amp; II</p>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <div class="skills">
+      <div><h3>Design / CAD</h3><ul><li>AutoCAD</li><li>Fusion 360</li></ul></div>
+      <div><h3>Programming</h3><ul><li>Java</li><li>Python</li><li>MATLAB</li><li>Arduino / mBot robotics</li></ul></div>
+      <div><h3>Field instrumentation</h3><ul><li>Trimble TSC7</li><li>Total station</li><li>GPS / GNSS</li></ul></div>
+      <div><h3>Data &amp; analysis</h3><ul><li>Excel</li><li>Statistical analysis</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
+    <p>I'm looking for engineering and manufacturing internships. The best way to reach me is email or LinkedIn.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:muirjt@g.cofc.edu">muirjt@g.cofc.edu</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/jacob-muir-658125350" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="meta" style="margin-top:22px">Outside of engineering: baseball, ultimate frisbee, and Campus Outreach.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Jacob Muir</div>
+</footer>
+</body>
+</html>
