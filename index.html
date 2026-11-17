@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jacob Muir — Systems Engineering</title>
 <meta name="description" content="Jacob Muir, Systems Engineering student at the College of Charleston. Projects, experience, and contact.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jtmuir06-cpu.github.io/">
+<meta property="og:title" content="Jacob Muir · Systems Engineering">
+<meta property="og:description" content="Systems Engineering student at the College of Charleston. Projects, experience, and résumé.">
+<meta property="og:image" content="https://jtmuir06-cpu.github.io/images/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,6 +103,14 @@
   .card p { margin: 0; }
   .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; align-self: flex-start; }
   .card .link { margin-top: auto; padding-top: 6px; font-weight: 600; font-size: 15px; }
+  .card.featured { grid-column: 1 / -1; padding: 0; overflow: hidden; display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; }
+  .card.featured .shot { display: block; background: #0d1219; border-right: 1px solid var(--line); }
+  .card.featured .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .card.featured .body { padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+  @media (max-width: 720px) {
+    .card.featured { grid-template-columns: 1fr; }
+    .card.featured .shot { border-right: 0; border-bottom: 1px solid var(--line); aspect-ratio: 16 / 9; }
+  }
 
   .job { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
   .job:last-child { border-bottom: 0; }
@@ -140,8 +158,8 @@
       and right now I'm studying human factors: how people actually use the systems engineers build.
     </p>
     <div class="btns">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/jacob-muir-658125350" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn primary" href="Jacob_Muir_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
     </div>
     </div>
     <img src="headshot.jpg" alt="Jacob Muir smiling, wearing a College of Charleston polo">
@@ -150,12 +168,17 @@
   <section id="projects" aria-labelledby="projects-h">
     <h2 id="projects-h">Projects</h2>
     <div class="cards">
-      <article class="card">
-        <span class="tag">Human Factors</span>
-        <h3>AeroDash: Drone Delivery Dashboard</h3>
-        <p class="meta">ENGR 321 · Team project · Fall 2026</p>
-        <p>An installable web app prototype for drone delivery operations: delivery flow, geofenced drop zones, live tracking, emergency return-to-base, and a fleet analytics dashboard.</p>
-        <a class="link" href="https://jtmuir06-cpu.github.io/aerodash-app/" target="_blank" rel="noopener">Try the prototype →</a>
+      <article class="card featured">
+        <a class="shot" href="https://jtmuir06-cpu.github.io/aerodash-app/dashboard.html" target="_blank" rel="noopener">
+          <img src="images/aerodash.jpg" alt="AeroDash fleet data dashboard showing deliveries per day, on-time rate, and delivery status charts" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="tag">Human Factors</span>
+          <h3>AeroDash: Drone Delivery Dashboard</h3>
+          <p class="meta">ENGR 321 · Team project · Fall 2026</p>
+          <p>An installable web app prototype for drone delivery operations: delivery flow, geofenced drop zones, live tracking, emergency return-to-base, and a fleet analytics dashboard.</p>
+          <a class="link" href="https://jtmuir06-cpu.github.io/aerodash-app/" target="_blank" rel="noopener">Try the prototype →</a>
+        </div>
       </article>
       <article class="card">
         <span class="tag">Human Factors</span>
@@ -215,7 +238,7 @@
     <h2 id="edu-h">Education</h2>
     <div class="edu">
       <h3>College of Charleston, Charleston SC</h3>
-      <p>B.S. Systems Engineering · Minor in Mathematics · Expected May 2028 · GPA 3.54</p>
+      <p>B.S. Systems Engineering · Minor in Mathematics · Expected May 2028</p>
       <p class="meta">President's Honor Roll (Fall 2024) · Dean's List (Fall 2025) · Phi Eta Sigma (Spring 2026)</p>
       <p class="meta">Coursework: Human Factors, Systems Engineering, Engineering Graphics, Intro to Electrical &amp; Mechanical Systems, Engineering Programming, Linear Algebra, Differential Equations, Statistical Methods, Physics I &amp; II</p>
     </div>
@@ -237,6 +260,7 @@
     <div class="btns">
       <a class="btn primary" href="mailto:muirjt@g.cofc.edu">muirjt@g.cofc.edu</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/jacob-muir-658125350" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="Jacob_Muir_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
     </div>
     <p class="meta" style="margin-top:22px">Outside of engineering: baseball, ultimate frisbee, and Campus Outreach.</p>
   </section>
