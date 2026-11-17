@@ -59,7 +59,17 @@
   nav a:hover { color: var(--accent); }
   @media (max-width: 600px) { nav ul { gap: 14px; } nav a { font-size: 14px; } .brand { display: none; } }
 
-  .hero { padding: 84px 0 56px; }
+  .hero { padding: 72px 0 56px; display: flex; align-items: center; gap: 48px; }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero img {
+    width: 240px; height: 240px; flex-shrink: 0;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--surface); box-shadow: 0 0 0 1px var(--line), 0 10px 30px rgba(0,0,0,.12);
+  }
+  @media (max-width: 720px) {
+    .hero { flex-direction: column-reverse; align-items: flex-start; gap: 24px; padding-top: 40px; }
+    .hero img { width: 150px; height: 150px; }
+  }
   .hero h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
   .hero .role { font-size: 1.2rem; color: var(--muted); margin: 0 0 22px; }
   .hero p.lead { max-width: 640px; margin: 0 0 28px; }
@@ -121,6 +131,7 @@
 
 <main id="main" class="wrap">
   <div class="hero">
+    <div class="hero-text">
     <h1>Jacob Muir</h1>
     <p class="role">Systems Engineering student · College of Charleston</p>
     <p class="lead">
@@ -132,6 +143,8 @@
       <a class="btn primary" href="#contact">Get in touch</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/jacob-muir-658125350" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    </div>
+    <img src="headshot.jpg" alt="Jacob Muir smiling, wearing a College of Charleston polo">
   </div>
 
   <section id="projects" aria-labelledby="projects-h">
